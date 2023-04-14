@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .timer {
+            text-align: center;
+display: flex;
+justify-content: space-between;
+font-size: 55px;
+color: white;
+font-weight: bold;
+
+        }
+.minutes{
+    float: right;
+}
+.buttons button{
+    font-size: 25px;
+    color: white;
+}
+.buttons{
+    margin-right: 20%;
+    margin-left: 35%;
+}
+ body{
+    background-color: brown;
+ }
+ .start{
+    background-color: blue;
+ }
+ .restart{
+
+    background-color: black;
+ }
+ .pause{
+    background-color: gray;
+ }
+
+ }
+    </style>
+</head>
+
+<body>
+    <div class="timer">
+      <div class="hours">
+        <p class="hrs">00</p>
+        <p>Hours</p>
+      </div>
+      <div class="minutes">
+        <p class="min">00</p>
+        <p>Minutes</p>
+      </div>
+      <div class="second">
+        <p class="sec">00</p>
+        <p>Seconds</p>
+      </div>
+      <div class="milisec">
+        <p class="count">00</p>
+        <p>MilliSecond</p>
+      </div>   </div>
+<br>
+<div class="buttons">
+        <button class="start" onclick="start()">Start</button>
+        <button class="restart" onclick="restart()">Restart</button>
+        <button class="pause" onclick="pause()">Pause</button>
+ </div>
+    <script>
+        let count = 0;
+        let sec = 0;
+        let min = 0;
+        let hrs = 0;
+        let timer = false;
+        function start() {
+
+            timer = true;
+            stopwatch();
+        }
+        function restart() {
+            timer = false;
+            stopwatch();
+            location.reload();
+        }
+        function pause() {
+            timer = false;
+            stopwatch();
+
+        }
+        function stopwatch() {
+            if (timer == true) {
+                count = count + 1;
+                document.querySelector(".count").innerHTML = count;
+                setTimeout("stopwatch()", 10);
+                if (count >= 100) {
+                    count = 0;
+                    sec = sec + 1;
+                    document.querySelector(".sec").innerHTML = sec;
+                }
+                if (sec >= 60) {
+                    sec = 0;
+                    min = min + 1;
+                    document.querySelector(".min").innerHTML = min;
+
+                }
+                if (min >= 60) {
+                    min = 0;
+                    hrs = hrs + 1;
+                    document.querySelector(".hrs").innerHTML = hrs;
+
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
